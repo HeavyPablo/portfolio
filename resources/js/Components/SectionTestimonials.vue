@@ -19,18 +19,18 @@ import ImageRobinson from '~images/testimonials/Robinson-doctum.webp';
 
             <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img :src="ImageDaniel" class="testimonial-img" alt="Daniel Vargas | CEO & Founder">
-                            <h3>Daniel Vargas</h3>
-                            <h4>CEO & Founder</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div>
+<!--                    <div class="swiper-slide">-->
+<!--                        <div class="testimonial-item">-->
+<!--                            <img :src="ImageDaniel" class="testimonial-img" alt="Daniel Vargas | CEO & Founder">-->
+<!--                            <h3>Daniel Vargas</h3>-->
+<!--                            <h4>CEO & Founder</h4>-->
+<!--                            <p>-->
+<!--                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+<!--                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.-->
+<!--                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="swiper-slide">
                         <div class="testimonial-item">
@@ -72,18 +72,18 @@ import ImageRobinson from '~images/testimonials/Robinson-doctum.webp';
                         </div>
                     </div>
 
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <img :src="ImageRobinson" class="testimonial-img" alt="Robinson Moraga | Fullstack developer">
-                            <h3>Robinson Moraga</h3>
-                            <h4>Fullstack developer</h4>
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                        </div>
-                    </div>
+<!--                    <div class="swiper-slide">-->
+<!--                        <div class="testimonial-item">-->
+<!--                            <img :src="ImageRobinson" class="testimonial-img" alt="Robinson Moraga | Fullstack developer">-->
+<!--                            <h3>Robinson Moraga</h3>-->
+<!--                            <h4>Fullstack developer</h4>-->
+<!--                            <p>-->
+<!--                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>-->
+<!--                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.-->
+<!--                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                 </div>
 
