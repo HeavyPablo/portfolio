@@ -1,16 +1,7 @@
-import 'boxicons';
-import 'boxicons/css/boxicons.min.css';
-import PureCounter from "@srexi/purecounterjs";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import GLightbox from 'glightbox';
-import 'glightbox/dist/css/glightbox.min.css';
-import Isotope from 'isotope-layout';
-import '@/swiper/swiper-bundle.min.js';
-import '@/swiper/swiper-bundle.min.css';
-import Typed from 'typed.js';
-import './noframework.waypoints.js';
-
+import '@/Theme/purecounter/purecounter_vanilla';
+import '@/Theme/glightbox/js/glightbox.min';
+import '@/Theme/swiper/swiper-bundle.min';
+import '@/Theme/waypoints/noframework.waypoints';
 
 const App = function () {
     return {
@@ -28,6 +19,10 @@ const App = function () {
                     return document.querySelector(el)
                 }
             }
+
+            const isMobile = () => {
+                return navigator.userAgentData.mobile;
+            };
 
             /**
              * Easy event listener function
@@ -100,29 +95,57 @@ const App = function () {
             /**
              * Mobile nav toggle
              */
-            on('click', '.mobile-nav-toggle', function(e) {
-                select('body').classList.toggle('mobile-nav-active')
-                this.classList.toggle('bi-list')
-                this.classList.toggle('bi-x')
-            })
+            if (isMobile()) {
+                console.log('in mobile');
+                on('touchend', '.mobile-nav-toggle', function(e) {
+                    select('body').classList.toggle('mobile-nav-active')
+                    this.classList.toggle('bi-list')
+                    this.classList.toggle('bi-x')
+                });
+            } else {
+                console.log('in desktop');
+                on('click', '.mobile-nav-toggle', function(e) {
+                    select('body').classList.toggle('mobile-nav-active')
+                    this.classList.toggle('bi-list')
+                    this.classList.toggle('bi-x')
+                })
+            }
 
             /**
              * Scrool with ofset on links with a class name .scrollto
              */
-            on('click', '.scrollto', function(e) {
-                if (select(this.hash)) {
-                    e.preventDefault()
 
-                    let body = select('body')
-                    if (body.classList.contains('mobile-nav-active')) {
-                        body.classList.remove('mobile-nav-active')
-                        let navbarToggle = select('.mobile-nav-toggle')
-                        navbarToggle.classList.toggle('bi-list')
-                        navbarToggle.classList.toggle('bi-x')
+            if (isMobile()) {
+                on('touchend', '.scrollto', function(e) {
+                    if (select(this.hash)) {
+                        e.preventDefault()
+
+                        let body = select('body')
+                        if (body.classList.contains('mobile-nav-active')) {
+                            body.classList.remove('mobile-nav-active')
+                            let navbarToggle = select('.mobile-nav-toggle')
+                            navbarToggle.classList.toggle('bi-list')
+                            navbarToggle.classList.toggle('bi-x')
+                        }
+                        scrollto(this.hash)
                     }
-                    scrollto(this.hash)
-                }
-            }, true)
+                }, true)
+            } else {
+                on('click', '.scrollto', function(e) {
+                    if (select(this.hash)) {
+                        e.preventDefault()
+
+                        let body = select('body')
+                        if (body.classList.contains('mobile-nav-active')) {
+                            body.classList.remove('mobile-nav-active')
+                            let navbarToggle = select('.mobile-nav-toggle')
+                            navbarToggle.classList.toggle('bi-list')
+                            navbarToggle.classList.toggle('bi-x')
+                        }
+                        scrollto(this.hash)
+                    }
+                }, true)
+            }
 
             /**
              * Scroll with ofset on page load with hash links in the url
@@ -146,22 +169,6 @@ const App = function () {
             }
 
             /**
-             * Hero type effect
-             */
-            const typed = select('.typed')
-            if (typed) {
-                let typed_strings = typed.getAttribute('data-typed-items')
-                typed_strings = typed_strings.split(',')
-                new Typed('.typed', {
-                    strings: typed_strings,
-                    loop: true,
-                    typeSpeed: 100,
-                    backSpeed: 50,
-                    backDelay: 2000
-                });
-            }
-
-            /**
              * Skills animation
              */
             let skilsContent = select('.skills-content');
@@ -177,36 +184,6 @@ const App = function () {
                     }
                 })
             }
-
-            /**
-             * Porfolio isotope and filter
-             */
-            window.addEventListener('load', () => {
-                let portfolioContainer = select('.portfolio-container');
-                if (portfolioContainer) {
-                    let portfolioIsotope = new Isotope(portfolioContainer, {
-                        itemSelector: '.portfolio-item'
-                    });
-
-                    let portfolioFilters = select('#portfolio-flters li', true);
-
-                    on('click', '#portfolio-flters li', function(e) {
-                        e.preventDefault();
-                        portfolioFilters.forEach(function(el) {
-                            el.classList.remove('filter-active');
-                        });
-                        this.classList.add('filter-active');
-
-                        portfolioIsotope.arrange({
-                            filter: this.getAttribute('data-filter')
-                        });
-                        portfolioIsotope.on('arrangeComplete', function() {
-                            AOS.refresh()
-                        });
-                    }, true);
-                }
-
-            });
 
             /**
              * Initiate portfolio lightbox
@@ -240,18 +217,6 @@ const App = function () {
                     type: 'bullets',
                     clickable: true
                 }
-            });
-
-            /**
-             * Animation on scroll
-             */
-            window.addEventListener('load', () => {
-                AOS.init({
-                    duration: 1000,
-                    easing: 'ease-in-out',
-                    once: true,
-                    mirror: false
-                })
             });
 
             /**

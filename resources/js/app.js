@@ -1,9 +1,12 @@
 import './bootstrap';
+
 import '../css/app.css';
+import '../scss/app.scss';
+
 import '../css/style.css';
+
 import '../css/transitions.css';
 
-import '../scss/app.scss';
 import * as bootstrap from 'bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 

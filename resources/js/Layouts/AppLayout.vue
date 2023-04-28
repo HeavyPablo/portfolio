@@ -2,30 +2,26 @@
 import {onMounted, ref} from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import Banner from '@/Components/Banner.vue';
-import Typed from "typed.js";
-import SectionAbout from "@/Components/SectionAbout.vue";
-import SectionContact from "@/Components/SectionContact.vue";
-import SectionFacts from "@/Components/SectionFacts.vue";
-import SectionPortfolio from "@/Components/SectionPortfolio.vue";
-import SectionResume from "@/Components/SectionResume.vue";
-import SectionServices from "@/Components/SectionServices.vue";
-import SectionSkills from "@/Components/SectionSkills.vue";
-import SectionTestimonials from "@/Components/SectionTestimonials.vue";
+import AOS from "aos";
 
 defineProps({
     title: String,
 });
 
 let loaded = ref(false);
-const email = ref('pabloasd3@gmail.com');
-const phone = ref('+56 9 6534 0835');
+
 
 onMounted(() => {
-
     setTimeout(() => {
         loaded.value = ! loaded.value;
     }, 200);
 
+    AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+    });
 });
 
 </script>
@@ -36,8 +32,6 @@ onMounted(() => {
     <div v-theme-app></div>
 
     <Head :title="title" />
-
-    <Banner />
 
     <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
 
@@ -55,53 +49,15 @@ onMounted(() => {
 
     </header>
 
-
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center">
-        <div class="container" data-aos="zoom-in" data-aos-delay="100">
-            <h1>Mario Bustos</h1>
-            <p>Soy <span class="typed" data-typed-items="Ingeniero en Informática, Desarrollador Web, Full Stack, Jefe de Proyecto"></span></p>
-            <div class="social-links">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-        </div>
-    </section><!-- End Hero -->
-
-    <main id="main">
-
-        <SectionAbout :email="email" :phone="phone"></SectionAbout>
-
-<!--        <SectionFacts></SectionFacts>-->
-
-        <SectionSkills></SectionSkills>
-
-        <SectionResume></SectionResume>
-
-        <SectionPortfolio></SectionPortfolio>
-
-<!--        <SectionServices></SectionServices>-->
-
-        <SectionTestimonials></SectionTestimonials>
-
-        <SectionContact :email="email" :phone="phone"></SectionContact>
-
-    </main>
-
+    <slot></slot>
 
     <footer id="footer">
         <div class="container">
             <h3>Mario Bustos</h3>
             <p>La capacidad de hacer lo que quieras está sujeta a tu imaginación.</p>
             <div class="social-links">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/HeavyPablo" class="google-plus"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/mario-bustos-sanchez-695011132/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
 
             <div class="copyright">

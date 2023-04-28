@@ -1,5 +1,8 @@
 <script setup>
 
+import {computed, onMounted, ref, watch} from "vue";
+import {usePage} from "@inertiajs/vue3";
+
 defineProps({
     email: {
         type: String,
@@ -10,6 +13,16 @@ defineProps({
         default: ''
     }
 });
+
+const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+const loading = ref(false);
+
+console.log(usePage().props.jetstream.flash.banner)
+
+const style = computed(() => usePage().props.jetstream.flash?.bannerStyle || 'success');
+const message = computed(() => usePage().props.jetstream.flash?.banner || '');
+const show = computed(() => usePage().props.jetstream.flash?.banner?.length > 0);
+
 
 </script>
 
@@ -41,7 +54,8 @@ defineProps({
 
                 <div class="col-lg-8 mt-5 mt-lg-0">
 
-                    <form action="" method="post" role="form" class="php-email-form">
+                    <form action="/new-request" method="post" role="form" class="php-email-form" @submit="loading = true">
+                        <input type="hidden" name="_token" :value="csrf">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Tu nombre" required>
@@ -51,17 +65,17 @@ defineProps({
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                            <input type="text" class="form-control" name="subject_request" id="subject_request" placeholder="Asunto" required>
                         </div>
                         <div class="form-group mt-3">
                             <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
                         </div>
                         <div class="my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div v-if="loading" class="loading">Loading</div>
+                            <div v-if="show && style === 'danger'" class="error-message"></div>
+                            <div v-if="show && style === 'success'" class="sent-message">{{ message }}</div>
                         </div>
-                        <div class="text-center"><button type="submit">Enviar</button></div>
+                        <div v-if="! loading" class="text-center"><button type="submit">Enviar</button></div>
                     </form>
 
                 </div>
