@@ -35,8 +35,8 @@ const phone = ref('+56 9 6534 0835');
                 </Typed>
 
                 <div class="social-links">
-                    <a href="https://github.com/HeavyPablo" class="google-plus"><i class="bx bxl-github"></i></a>
-                    <a href="https://www.linkedin.com/in/mario-bustos-sanchez-695011132/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                    <a href="https://github.com/HeavyPablo" target="_blank" class="google-plus"><i class="bx bxl-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mario-bustos-sanchez-695011132/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                 </div>
             </div>
         </section>

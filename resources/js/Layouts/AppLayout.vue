@@ -56,8 +56,8 @@ onMounted(() => {
             <h3>Mario Bustos</h3>
             <p>La capacidad de hacer lo que quieras está sujeta a tu imaginación.</p>
             <div class="social-links">
-                <a href="https://github.com/HeavyPablo" class="google-plus"><i class="bx bxl-github"></i></a>
-                <a href="https://www.linkedin.com/in/mario-bustos-sanchez-695011132/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/HeavyPablo" target="_blank" class="google-plus"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/mario-bustos-sanchez-695011132/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
 
             <div class="copyright">

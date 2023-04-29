@@ -1,5 +1,5 @@
 <script setup>
-    import ProfileImage from '~images/profile-img.jpg';
+    import ProfileImage from '~images/profile.webp';
     import {computed, ref} from "vue";
 
     defineProps({
